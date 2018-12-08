@@ -14,6 +14,7 @@ namespace FinalProject
 
         int CalculateDistance(int a, int b )
         {
+
             return a;
         }
 
