@@ -13,6 +13,7 @@ namespace FinalProject
             int i = -99;
             int j = -99;
             int k = -99;
+            double price = 0;
             
             int fMultiply = 1;
 
@@ -54,24 +55,53 @@ namespace FinalProject
                             "6) Atlanta (ATL)        7) Las Vegas (LAS)\n" +
                             "8) Phoenix (PHX)        9) Sioux Falls (FSD)\n");
 
+                        k = Int32.Parse(Console.ReadLine());
 
+                        price = flight.price[j, k];
 
-                        Console.WriteLine("Would you also like to make a Hotel booking? 1) yes / 2) no\n");
+                        Console.WriteLine("How many seats do you need booked?");
 
                         j = Int32.Parse(Console.ReadLine());
 
-                        if(j == 1)
+                        flight.numPeople = j;
+                        fMultiply = fMultiply * flight.numPeople;
+
+
+                        Console.WriteLine("Would you like to upgrade to First Class? 1) Yes / 2) No\n");
+
+                        j = Int32.Parse(Console.ReadLine()); 
+
+                        if (j == 1)
                         {
-                            ++z;
-                            i = 2;
+                            fMultiply = fMultiply * 3;
                         }
-                        else if (j == 2)
-                        {
+
+                        price = price * fMultiply;
+
+                        Console.WriteLine("The Current Price for your flight is: $" + price);
+
+
+
+
+
+
+
+
+                        if (z < 2)
+                        { 
+                            Console.WriteLine("Would you also like to make a Hotel booking? 1) Yes / 2) No\n");
+
+                            j = Int32.Parse(Console.ReadLine());
+
+                            if (j == 1)
+                            {
+                                ++z;
+                                i = 2;
+                            }
+                            else
+                            {
                             z = 2;
-                        }
-                        else
-                        {
-                            z = 2;
+                            }
                         }
 
                     }
@@ -92,10 +122,6 @@ namespace FinalProject
                         {
                             ++z;
                             i = 1;
-                        }
-                        else if (j == 2)
-                        {
-                            z = 2;
                         }
                         else
                         {

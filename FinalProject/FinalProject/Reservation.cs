@@ -8,21 +8,17 @@ namespace FinalProject
 {
     class Reservation
     {
-        double price = 0;
-        int numAdults = 0;
-        int numKids = 0;
-
-        double CalcPrice(int Modifier)
+        protected internal int numPeople = 0;
+      
+        
+        public Reservation()
         {
-            double total;
-            total = price * Modifier;
-            return total;
+            numPeople = 1;
         }
 
-        public double Price
+        ~Reservation()
         {
-            get { return price; }
-            set { price = value; }
+
         }
 
 
