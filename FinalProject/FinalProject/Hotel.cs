@@ -37,7 +37,10 @@ namespace FinalProject
             }
             set
             {
-                if (((numPeople + 3) / value)  <= 4)
+                double k;
+                k = numPeople;
+
+                if ((k / value)  <= 4.00)
                 {
                     numRooms = value;
                 }

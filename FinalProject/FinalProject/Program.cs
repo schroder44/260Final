@@ -16,14 +16,15 @@ namespace FinalProject
 
             double fprice = 0;
             double hprice = 0;
+            double tax = .06;
             double total = 0;
             
             int fMultiply = 1;
             int hMultiply = 1;
 
-            while (i > 0)
+            while (i != 0)
             {
-                Console.WriteLine("Welcom to Zach's Flight/Hotel Reservation System \n" +
+                Console.WriteLine("Welcom to Zach's Flight/Hotel Booking System \n" +
                    "What would you like to do: \n" +
                    "\n" +
                    "1: Book a Flight \n" +
@@ -46,11 +47,11 @@ namespace FinalProject
                         Flight flight = new Flight();
                         Console.WriteLine("You have selected booking a flight \n" +
                             "Where are you Flying from? \n(Please enter the number of your selection)\n\n" +
-                            "0) Los Angeles (LAX)    1) New York City (JFK)\n" +
-                            "2) Denver (DEN)         3) Chicago (ORD)\n" +
-                            "4) Seattle (SEA)        5) Dallas / Fort Worth (DFW)\n" +
-                            "6) Atlanta (ATL)        7) Las Vegas (LAS)\n" +
-                            "8) Phoenix (PHX)        9) Sioux Falls (FSD)");
+                            "0: Los Angeles (LAX)    1: New York City (JFK)\n" +
+                            "2: Denver (DEN)         3: Chicago (ORD)\n" +
+                            "4: Seattle (SEA)        5: Dallas / Fort Worth (DFW)\n" +
+                            "6: Atlanta (ATL)        7: Las Vegas (LAS)\n" +
+                            "8: Phoenix (PHX)        9: Sioux Falls (FSD)");
 
                         j = Int32.Parse(Console.ReadLine());
                         
@@ -89,11 +90,11 @@ namespace FinalProject
                         }
 
                         Console.WriteLine("Where are you Flying to? \n(Please enter the number of your selection)\n\n" +
-                            "0) Los Angeles (LAX)    1) New York City (JFK)\n" +
-                            "2) Denver (DEN)         3) Chicago (ORD)\n" +
-                            "4) Seattle (SEA)        5) Dallas / Fort Wroth (DFW)\n" +
-                            "6) Atlanta (ATL)        7) Las Vegas (LAS)\n" +
-                            "8) Phoenix (PHX)        9) Sioux Falls (FSD)\n");
+                           "0: Los Angeles (LAX)    1: New York City (JFK)\n" +
+                           "2: Denver (DEN)         3: Chicago (ORD)\n" +
+                           "4: Seattle (SEA)        5: Dallas / Fort Worth (DFW)\n" +
+                           "6: Atlanta (ATL)        7: Las Vegas (LAS)\n" +
+                           "8: Phoenix (PHX)        9: Sioux Falls (FSD)\n");
 
                         k = Int32.Parse(Console.ReadLine());
 
@@ -133,7 +134,7 @@ namespace FinalProject
 
                         fprice = flight.price[j, k];
 
-                        Console.WriteLine("How many seats do you need booked?");
+                        Console.WriteLine("How many seats do you need booked?\n");
 
                         flight.numPeople = Int32.Parse(Console.ReadLine());
                         fMultiply = fMultiply * flight.numPeople;
@@ -178,11 +179,11 @@ namespace FinalProject
 
                         Console.WriteLine("You have selected booking a hotel \n" +
                            "What city will you be staying in? \n(Please enter the number of your selection)\n\n" +
-                           "0) Los Angeles (LAX)    1) New York City (JFK)\n" +
-                           "2) Denver (DEN)         3) Chicago (ORD)\n" +
-                           "4) Seattle (SEA)        5) Dallas / Fort Worth (DFW)\n" +
-                           "6) Atlanta (ATL)        7) Las Vegas (LAS)\n" +
-                           "8) Phoenix (PHX)        9) Sioux Falls (FSD)");
+                           "0: Los Angeles (LAX)    1: New York City (JFK)\n" +
+                           "2: Denver (DEN)         3: Chicago (ORD)\n" +
+                           "4: Seattle (SEA)        5: Dallas / Fort Worth (DFW)\n" +
+                           "6: Atlanta (ATL)        7: Las Vegas (LAS)\n" +
+                           "8: Phoenix (PHX)        9: Sioux Falls (FSD)\n");
 
                         k = Int32.Parse(Console.ReadLine());
 
@@ -284,14 +285,41 @@ namespace FinalProject
                     else
                     {
                         Console.WriteLine("Invalid Selection.\n");
-                        i = -99;
+                        i = 0;
                     }
                 }
 
-
-
-                i = -1;
+                i = 0;
             }
+
+            total = hprice + fprice + 25;
+            tax *= total;
+            total = total + tax;
+
+            Console.WriteLine("Your grand total for your booking(s) is:\n" +
+                                "Flight booking total: $" + fprice +
+                              "\nHotel booking total:  $" + hprice +
+                              "\nBooking Fee:          $25.00" +
+                              "\nTax (6%):             $" + tax +
+                              "\nGrand total:          $" + total + "\n");
+
+            Creditcard card = new Creditcard();
+
+            Console.WriteLine("Please enter the first and last name, seperated by a space, on your credit card.\n");
+
+            card.Name = Console.ReadLine();
+
+            Console.WriteLine("Please enter in your credit card number.");
+
+            card.Number = Console.ReadLine();
+
+            Console.WriteLine("Thank you " + card.Name + " for using Zach's Booking system.\n" +
+                "Your card ending in " + card.Number + " has been charged $" + total + " And your reservations made.\n" +
+                "Have a great day");
+
+            Console.ReadKey();
+
+            
         }
     }
 }
