@@ -8,14 +8,33 @@ namespace FinalProject
 {
     class Flight : Reservation
     {
-        public double[,] price = new double[10, 10];
-        string depart;
-        string arrive;
+        internal double[,] price = new double[10, 10];
+        private string depart;
+        private string arrive;
+        private Random r = new Random();
         
-        public string Depart { get; set; }
-
-
-        public string Arrive { get; set; }
+        public string Depart
+        {
+            get
+            {
+                return depart;
+            }
+            set
+            {
+                depart = value;
+            }
+        }
+        public string Arrive
+        {
+            get
+            {
+                return arrive;
+            }
+            set
+            {
+                arrive = value;
+            }
+        }
 
         public Flight()
         {
@@ -29,12 +48,12 @@ namespace FinalProject
                     }
                     else
                     {
-                        price[i, k] = 200;
+                        price[i, k] = r.Next(150, 350);
                     }
                 }
             }
-            depart = null;
-            arrive = null;
+            Depart = null;
+            Arrive = null;
 
         }
 

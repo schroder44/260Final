@@ -8,6 +8,24 @@ namespace FinalProject
 {
     class Hotel : Reservation
     {
+        private string city;
+
+
+
+
+
+
+        public string City
+        {
+            get
+            {
+                return city;
+            }
+            set
+            {
+                city = value;
+            }
+        }
 
     }
 }
