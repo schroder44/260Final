@@ -10,8 +10,13 @@ namespace FinalProject
     {
         private string city;
         private int numRooms = 0;
+        private int numNights = 0;
+        private int numStars = 0;
+        private double price = 0;
+        private Random r = new Random();
 
-        
+
+
         public string City
         {
             get
@@ -32,7 +37,7 @@ namespace FinalProject
             }
             set
             {
-                if ((numPeople / value) <= 4)
+                if (((numPeople + 3) / value)  <= 4)
                 {
                     numRooms = value;
                 }
@@ -56,6 +61,78 @@ namespace FinalProject
                     }
                 }
             }
+        }
+
+        public int NumNights
+        {
+            get
+            {
+                return numNights;
+            }
+            set
+            {
+                numNights = value;
+            }
+        }
+
+        public int NumStars
+        {
+            get
+            {
+                return numStars;
+            }
+            set
+            {
+                if( value >= 2 && value <= 5)
+                {
+                    numStars = value;
+                }
+                else if ( value < 2)
+                {
+                    numStars = 2;
+                }
+                else if ( value >5 )
+                {
+                    numStars = 5;
+                }
+            }
+        }
+
+        public double Price
+        {
+            get
+            {
+                if (numStars == 2)
+                {
+                    price = r.Next(45, 100);
+                }
+                else if (numStars == 3)
+                {
+                    price = r.Next(100, 180);
+                }
+                else if (numStars == 4)
+                {
+                    price = r.Next(150, 250);
+                }
+                else if (numStars == 5)
+                {
+                    price = r.Next(250, 600);
+                }
+                return price;
+            }
+            set
+            {
+
+            }
+        }
+
+        public Hotel()
+        {
+            city = null;
+            numRooms = 0;
+            numNights = 0;
+            numStars = 0;
+            price = 0;
         }
 
     }

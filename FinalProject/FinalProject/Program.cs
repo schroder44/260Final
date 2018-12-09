@@ -19,8 +19,9 @@ namespace FinalProject
             double total = 0;
             
             int fMultiply = 1;
+            int hMultiply = 1;
 
-            while (i != 0)
+            while (i > 0)
             {
                 Console.WriteLine("Welcom to Zach's Flight/Hotel Reservation System \n" +
                    "What would you like to do: \n" +
@@ -160,7 +161,6 @@ namespace FinalProject
 
                             if (j == 1)
                             {
-                                ++z;
                                 i = 2;
                             }
                             else
@@ -227,8 +227,36 @@ namespace FinalProject
                         Console.WriteLine("How many rooms would you like to book?\n");
 
                         hotel.NumRooms = Int32.Parse(Console.ReadLine());
+                        
+                        if(hotel.NumRooms > 0)
+                        {
+                            hMultiply = hMultiply * hotel.NumRooms;
 
+                            Console.WriteLine("How many nights will you be staying?");
 
+                            hotel.NumNights = Int32.Parse(Console.ReadLine());
+
+                            hMultiply = hMultiply * hotel.NumNights;
+
+                            Console.WriteLine("What class hotel would you like to stay in? (Hotel Star Rating: between 2-5)");
+
+                            hotel.NumStars = Int32.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Would you like to upgrade to a Suite?  1)Yes  2)No\n");
+
+                            j = Int32.Parse(Console.ReadLine());
+
+                            if(j == 1)
+                            {
+                                hMultiply = hMultiply * 2;
+                            }
+
+                            hprice = hotel.Price;
+                            hprice *= hMultiply;
+
+                            Console.WriteLine("The total cost for your " + hotel.NumStars + " star hotel booking in " + hotel.City + " for " + hotel.NumRooms +
+                                " rooms for " + hotel.NumNights + " nights is: $" + hprice + ".\n");
+                        }
 
 
                         if (z < 2)
@@ -240,7 +268,6 @@ namespace FinalProject
 
                             if (j == 1)
                             {
-                                ++z;
                                 i = 1;
                             }
                             else
@@ -248,10 +275,7 @@ namespace FinalProject
                                 z = 2;
                             }
                         }
-
-
-
-
+                        
                     }
                     else if (i == 0)//Exit Program
                     {
@@ -259,9 +283,14 @@ namespace FinalProject
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Selection, try again \n");
+                        Console.WriteLine("Invalid Selection.\n");
+                        i = -99;
                     }
                 }
+
+
+
+                i = -1;
             }
         }
     }
