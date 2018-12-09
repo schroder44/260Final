@@ -40,6 +40,8 @@ namespace FinalProject
 
                     if (i == 1)//chose Flight
                     {
+                        ++z;
+
                         Flight flight = new Flight();
                         Console.WriteLine("You have selected booking a flight \n" +
                             "Where are you Flying from? \n(Please enter the number of your selection)\n\n" +
@@ -132,9 +134,7 @@ namespace FinalProject
 
                         Console.WriteLine("How many seats do you need booked?");
 
-                        j = Int32.Parse(Console.ReadLine());
-
-                        flight.numPeople = j;
+                        flight.numPeople = Int32.Parse(Console.ReadLine());
                         fMultiply = fMultiply * flight.numPeople;
 
 
@@ -172,6 +172,8 @@ namespace FinalProject
                     }
                     else if (i == 2)//Chose Hotel
                     {
+                        ++z;
+
                         Hotel hotel = new Hotel();
 
                         Console.WriteLine("You have selected booking a hotel \n" +
@@ -217,6 +219,14 @@ namespace FinalProject
                                 hotel.City = "Sioux Falls";
                                 break;
                         }
+
+                        Console.WriteLine("How many people will be staying?\n");
+
+                        hotel.numPeople = Int32.Parse(Console.ReadLine());
+
+                        Console.WriteLine("How many rooms would you like to book?\n");
+
+                        hotel.NumRooms = Int32.Parse(Console.ReadLine());
 
 
 
